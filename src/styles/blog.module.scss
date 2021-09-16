@@ -1,0 +1,27 @@
+.posts {
+  width: 50%;
+  margin: 0 auto;
+  font-family: 'Helvetica';
+}
+
+.text {
+  color: #757575;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+}
+
+.title {
+  color: #404040;
+  font-size: 30px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date {
+  color: #BBBBBB;
+}

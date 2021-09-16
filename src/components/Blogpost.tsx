@@ -1,42 +1,26 @@
 import React from "react"
 import { StaticQuery, graphql, Link } from 'gatsby'
-
-// const Template: React.FC = (() => (
-//   <StaticQuery
-//     query={graphql`
-//       query indexLayoutQueryAndIndexLayoutQueryAndIndexLayoutQueryAndIndexLayoutQuery {
-//         markdownRemark(timeToRead: {}) {
-//           fields {
-//             slug
-//           }
-//           frontmatter {
-//             date
-//             title
-//           }
-//           html
-//         }
-//       }
-//     `}
-//     render={(data) => (
-//       <>
-//         {data.markdownRemark.html}
-//       </>
-//     )}
-//   />
-// )
-// )
-
-
-// export default Template
+import blog from '../styles/blog.module.scss'
 
 class Navigation extends React.Component {
   render() {
     console.log(this.props.posts)
 
     return (
-      <>
-        {this.props.posts.map(i => <Link to={i.node.fields.slug}>{i.node.frontmatter.title}</Link>)}
-      </>
+      <div className={blog.posts}>
+        {this.props.posts.map(i =>
+          <p>
+            <Link to={i.node.fields.slug}>
+              <div className={blog.flex}>
+                <span className={blog.title}>{i.node.frontmatter.title}</span>
+                <div className={blog.date}>{i.node.frontmatter.date}</div>
+              </div>
+              <div dangerouslySetInnerHTML={{ __html: i.node.html }} className={blog.text} />
+            </Link>
+
+          </p>
+        )}
+      </div>
     )
   }
 }
@@ -58,6 +42,7 @@ export default () => (
                 slug
               }
               frontmatter {
+                date(formatString: "MMMM D, YYYY")
                 title
               }
             }

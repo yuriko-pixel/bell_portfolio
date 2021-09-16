@@ -30,7 +30,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({ data }) => (
     <>
       <>
         <h1>{data.markdownRemark.frontmatter.title}</h1>
-        {/* eslint-disable-next-line react/no-danger */}
+        {data.markdownRemark.frontmatter.date}
         <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
       </>
     </>
@@ -55,6 +55,7 @@ export const query = graphql`
       html
       excerpt
       frontmatter {
+        date(formatString: "MMMM D, YYYY")
         title
       }
     }
