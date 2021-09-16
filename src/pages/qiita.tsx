@@ -1,5 +1,6 @@
 import * as React from 'react'
 import IndexLayout from '../layouts'
+import Top from '../components/Top'
 
 const Qiita = () => (
   <IndexLayout>

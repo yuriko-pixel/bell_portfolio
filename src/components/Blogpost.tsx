@@ -9,7 +9,7 @@ class Navigation extends React.Component {
     return (
       <div className={blog.posts}>
         {this.props.posts.map(i =>
-          <p>
+          <p className={blog.container}>
             <Link to={i.node.fields.slug}>
               <div className={blog.flex}>
                 <span className={blog.title}>{i.node.frontmatter.title}</span>

@@ -1,20 +1,10 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
-
 import IndexLayout from '../layouts'
+import post from '../styles/post.module.scss'
 
 interface PageTemplateProps {
   data: {
-    site: {
-      siteMetadata: {
-        title: string
-        description: string
-        author: {
-          name: string
-          url: string
-        }
-      }
-    }
     markdownRemark: {
       html: string
       excerpt: string
@@ -28,11 +18,11 @@ interface PageTemplateProps {
 const PageTemplate: React.FC<PageTemplateProps> = ({ data }) => (
   <IndexLayout>
     <>
-      <>
-        <h1>{data.markdownRemark.frontmatter.title}</h1>
-        {data.markdownRemark.frontmatter.date}
-        <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
-      </>
+      <div className={post.container}>
+        <h1 className={post.title}>{data.markdownRemark.frontmatter.title}</h1>
+        <span className={post.date}>{data.markdownRemark.frontmatter.date}</span>
+        <div className={post.text} dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
+      </div>
     </>
   </IndexLayout>
 )
@@ -41,16 +31,6 @@ export default PageTemplate
 
 export const query = graphql`
   query PageTemplateQuery($slug: String!) {
-    site {
-      siteMetadata {
-        title
-        description
-        author {
-          name
-          url
-        }
-      }
-    }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       excerpt

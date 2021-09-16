@@ -16,6 +16,7 @@ interface StaticQueryPost {
 }
 
 const Postlist: React.FC = ({ children }) => (
+
   <StaticQuery
     query={graphql`
       query indexLayoutQuery {

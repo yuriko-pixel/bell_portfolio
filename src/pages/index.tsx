@@ -6,6 +6,7 @@ import Top from '../components/Top'
 
 const IndexPage: React.FC = (() => (
   <IndexLayout>
+    <Top />
     <Blogpost />
   </IndexLayout>
 ))
